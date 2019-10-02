@@ -224,9 +224,6 @@
 # wrong constant name max_retries=
 # wrong constant name redirect_limit
 # wrong constant name redirect_limit=
-# wrong constant name link
-# wrong constant name cp_lr
-# wrong constant name link_entry
 # wrong constant name allowed_push_host
 # wrong constant name already_tagged?
 # wrong constant name base
@@ -247,8 +244,7 @@
 # wrong constant name perform_git_push
 # wrong constant name rubygem_push
 # wrong constant name sh
-# wrong constant name sh_with_input
-# wrong constant name sh_with_status
+# wrong constant name sh_with_code
 # wrong constant name spec_path
 # wrong constant name tag_version
 # wrong constant name version
@@ -372,9 +368,6 @@
 # wrong constant name default_retries
 # uninitialized constant Bundler::RubyGemsGemInstaller::ENV_PATHS
 # wrong constant name <static-init>
-# uninitialized constant Bundler::RubygemsIntegration::MoreFuture::EXT_LOCK
-# Did you mean?  Bundler::RubygemsIntegration::EXT_LOCK
-# wrong constant name default_stubs
 # wrong constant name ==
 # wrong constant name fallback_timeout
 # wrong constant name fallback_timeout=

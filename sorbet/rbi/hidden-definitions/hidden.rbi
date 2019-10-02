@@ -224,20 +224,6 @@ class Bundler::Fetcher
   def self.redirect_limit=(redirect_limit); end
 end
 
-module Bundler::FileUtils
-  VERSION = ::T.let(nil, ::T.untyped)
-end
-
-class Bundler::FileUtils::Entry_
-  def link(dest); end
-end
-
-module Bundler::FileUtils
-  def self.cp_lr(src, dest, noop: T.unsafe(nil), verbose: T.unsafe(nil), dereference_root: T.unsafe(nil), remove_destination: T.unsafe(nil)); end
-
-  def self.link_entry(src, dest, dereference_root=T.unsafe(nil), remove_destination=T.unsafe(nil)); end
-end
-
 class Bundler::GemHelper
   def allowed_push_host(); end
 
@@ -279,9 +265,7 @@ class Bundler::GemHelper
 
   def sh(cmd, &block); end
 
-  def sh_with_input(cmd); end
-
-  def sh_with_status(cmd, &block); end
+  def sh_with_code(cmd, &block); end
 
   def spec_path(); end
 
@@ -575,10 +559,6 @@ class Bundler::RubyGemsGemInstaller
 end
 
 class Bundler::RubyGemsGemInstaller
-end
-
-class Bundler::RubygemsIntegration::MoreFuture
-  def default_stubs(); end
 end
 
 class Bundler::Settings::Mirror
