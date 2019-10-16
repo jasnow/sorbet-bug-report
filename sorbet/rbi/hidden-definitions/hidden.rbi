@@ -224,7 +224,25 @@ class Bundler::Fetcher
   def self.redirect_limit=(redirect_limit); end
 end
 
+module Bundler::FileUtils
+  VERSION = ::T.let(nil, ::T.untyped)
+end
+
+class Bundler::FileUtils::Entry_
+  def link(dest); end
+end
+
+module Bundler::FileUtils
+  def self.cp_lr(src, dest, noop: T.unsafe(nil), verbose: T.unsafe(nil), dereference_root: T.unsafe(nil), remove_destination: T.unsafe(nil)); end
+
+  def self.link_entry(src, dest, dereference_root=T.unsafe(nil), remove_destination=T.unsafe(nil)); end
+end
+
 class Bundler::GemHelper
+  include ::Rake::DSL
+  include ::Rake::FileUtilsExt
+  include ::FileUtils
+  include ::FileUtils::StreamUtils_
   def allowed_push_host(); end
 
   def already_tagged?(); end
@@ -265,7 +283,9 @@ class Bundler::GemHelper
 
   def sh(cmd, &block); end
 
-  def sh_with_code(cmd, &block); end
+  def sh_with_input(cmd); end
+
+  def sh_with_status(cmd, &block); end
 
   def spec_path(); end
 
@@ -559,6 +579,10 @@ class Bundler::RubyGemsGemInstaller
 end
 
 class Bundler::RubyGemsGemInstaller
+end
+
+class Bundler::RubygemsIntegration::MoreFuture
+  def default_stubs(); end
 end
 
 class Bundler::Settings::Mirror
@@ -960,8 +984,6 @@ class ERB::Compiler::Scanner
   DEFAULT_STAGS = ::T.let(nil, ::T.untyped)
 end
 
-Emitter = Psych::Stream::Emitter
-
 class Encoding
   def _dump(*_); end
 end
@@ -1330,46 +1352,6 @@ class Etc::Passwd
   def self.members(); end
 end
 
-module Etc
-  def self.confstr(_); end
-
-  def self.endgrent(); end
-
-  def self.endpwent(); end
-
-  def self.getgrent(); end
-
-  def self.getgrgid(*_); end
-
-  def self.getgrnam(_); end
-
-  def self.getlogin(); end
-
-  def self.getpwent(); end
-
-  def self.getpwnam(_); end
-
-  def self.getpwuid(*_); end
-
-  def self.group(); end
-
-  def self.nprocessors(); end
-
-  def self.passwd(); end
-
-  def self.setgrent(); end
-
-  def self.setpwent(); end
-
-  def self.sysconf(_); end
-
-  def self.sysconfdir(); end
-
-  def self.systmpdir(); end
-
-  def self.uname(); end
-end
-
 class Exception
   def full_message(*_); end
 end
@@ -1416,8 +1398,12 @@ class File
   def self.mkfifo(*_); end
 end
 
+FileList = Rake::FileList
+
 module FileUtils
   include ::FileUtils::StreamUtils_
+  LN_SUPPORTED = ::T.let(nil, ::T.untyped)
+  RUBY = ::T.let(nil, ::T.untyped)
 end
 
 module FileUtils::DryRun
@@ -1816,8 +1802,6 @@ JSON::Parser = JSON::Ext::Parser
 JSON::State = JSON::Ext::Generator::State
 
 JSON::UnparserError = JSON::GeneratorError
-
-JSONTree = Psych::Visitors::JSONTree
 
 module Kernel
   def gem(dep, *reqs); end
@@ -4316,6 +4300,79 @@ Rack::Utils::KeySpaceConstrainedParams = Rack::QueryParser::Params
 
 Rack::Utils::ParameterTypeError = Rack::QueryParser::ParameterTypeError
 
+module Rake
+  EARLY = ::T.let(nil, ::T.untyped)
+  EMPTY_TASK_ARGS = ::T.let(nil, ::T.untyped)
+  LATE = ::T.let(nil, ::T.untyped)
+  VERSION = ::T.let(nil, ::T.untyped)
+end
+
+class Rake::Application
+  DEFAULT_RAKEFILES = ::T.let(nil, ::T.untyped)
+end
+
+module Rake::Backtrace
+  SUPPRESSED_PATHS = ::T.let(nil, ::T.untyped)
+  SUPPRESSED_PATHS_RE = ::T.let(nil, ::T.untyped)
+  SUPPRESS_PATTERN = ::T.let(nil, ::T.untyped)
+  SYS_KEYS = ::T.let(nil, ::T.untyped)
+  SYS_PATHS = ::T.let(nil, ::T.untyped)
+end
+
+module Rake::DSL
+  include ::FileUtils::StreamUtils_
+end
+
+class Rake::FileList
+  ARRAY_METHODS = ::T.let(nil, ::T.untyped)
+  DEFAULT_IGNORE_PATTERNS = ::T.let(nil, ::T.untyped)
+  DEFAULT_IGNORE_PROCS = ::T.let(nil, ::T.untyped)
+  DELEGATING_METHODS = ::T.let(nil, ::T.untyped)
+  GLOB_PATTERN = ::T.let(nil, ::T.untyped)
+  MUST_DEFINE = ::T.let(nil, ::T.untyped)
+  MUST_NOT_DEFINE = ::T.let(nil, ::T.untyped)
+  SPECIAL_RETURN = ::T.let(nil, ::T.untyped)
+end
+
+module Rake::FileUtilsExt
+  include ::FileUtils::StreamUtils_
+  DEFAULT = ::T.let(nil, ::T.untyped)
+end
+
+module Rake::FileUtilsExt
+  extend ::FileUtils::StreamUtils_
+end
+
+class Rake::InvocationChain
+  EMPTY = ::T.let(nil, ::T.untyped)
+end
+
+class Rake::LinkedList
+  EMPTY = ::T.let(nil, ::T.untyped)
+end
+
+class Rake::Promise
+  NOT_SET = ::T.let(nil, ::T.untyped)
+end
+
+class Rake::Scope
+  EMPTY = ::T.let(nil, ::T.untyped)
+end
+
+module Rake::Version
+  BUILD = ::T.let(nil, ::T.untyped)
+  MAJOR = ::T.let(nil, ::T.untyped)
+  MINOR = ::T.let(nil, ::T.untyped)
+  NUMBERS = ::T.let(nil, ::T.untyped)
+  OTHER = ::T.let(nil, ::T.untyped)
+end
+
+module Rake
+  extend ::FileUtils::StreamUtils_
+end
+
+RakeFileUtils = Rake::FileUtilsExt
+
 module Random::Formatter
   def alphanumeric(n=T.unsafe(nil)); end
   ALPHANUMERIC = ::T.let(nil, ::T.untyped)
@@ -4709,6 +4766,24 @@ module SingleForwardable
   def delegate(hash); end
 
   def single_delegate(hash); end
+end
+
+module Singleton
+  def _dump(depth=T.unsafe(nil)); end
+
+  def clone(); end
+
+  def dup(); end
+end
+
+module Singleton::SingletonClassMethods
+  def _load(str); end
+
+  def clone(); end
+end
+
+module Singleton
+  def self.__init__(klass); end
 end
 
 class Socket
@@ -5310,17 +5385,11 @@ end
 
 class String
   include ::JSON::Ext::Generator::GeneratorMethods::String
-  def +@(); end
-
-  def -@(); end
-
   def []=(*_); end
 
   def casecmp?(_); end
 
   def each_grapheme_cluster(); end
-
-  def encode(*_); end
 
   def encode!(*_); end
 
@@ -5774,8 +5843,6 @@ end
 module UnicodeNormalize
 end
 
-Visitor = Psych::Visitors::Visitor
-
 module Warning
   def warn(_); end
 end
@@ -5785,8 +5852,6 @@ module Warning
 end
 
 YAML = Psych
-
-YAMLTree = Psych::Visitors::YAMLTree
 
 module Zlib
   ASCII = ::T.let(nil, ::T.untyped)
