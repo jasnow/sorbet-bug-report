@@ -9,6 +9,7 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rake (13.0.0)
     sinatra (2.0.6)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -21,10 +22,10 @@ GEM
       rack-protection (= 2.0.6)
       sinatra (= 2.0.6)
       tilt (~> 2.0)
-    sorbet (0.4.4869)
-      sorbet-static (= 0.4.4869)
-    sorbet-runtime (0.4.4869)
-    sorbet-static (0.4.4869-universal-darwin-14)
+    sorbet (0.4.4878)
+      sorbet-static (= 0.4.4878)
+    sorbet-runtime (0.4.4878)
+    sorbet-static (0.4.4878-universal-darwin-14)
     tilt (2.0.10)
 
 PLATFORMS
@@ -32,6 +33,7 @@ PLATFORMS
 
 DEPENDENCIES
   rack-test
+  rake
   sinatra (= 2.0.6)
   sinatra-contrib
   sorbet
