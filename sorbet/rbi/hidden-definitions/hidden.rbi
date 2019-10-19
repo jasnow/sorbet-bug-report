@@ -984,6 +984,8 @@ class ERB::Compiler::Scanner
   DEFAULT_STAGS = ::T.let(nil, ::T.untyped)
 end
 
+Emitter = Psych::Stream::Emitter
+
 class Encoding
   def _dump(*_); end
 end
@@ -1802,6 +1804,8 @@ JSON::Parser = JSON::Ext::Parser
 JSON::State = JSON::Ext::Generator::State
 
 JSON::UnparserError = JSON::GeneratorError
+
+JSONTree = Psych::Visitors::JSONTree
 
 module Kernel
   def gem(dep, *reqs); end
@@ -4294,12 +4298,6 @@ module Rack::Utils
   SYMBOL_TO_STATUS_CODE = ::T.let(nil, ::T.untyped)
 end
 
-Rack::Utils::InvalidParameterError = Rack::QueryParser::InvalidParameterError
-
-Rack::Utils::KeySpaceConstrainedParams = Rack::QueryParser::Params
-
-Rack::Utils::ParameterTypeError = Rack::QueryParser::ParameterTypeError
-
 module Rake
   EARLY = ::T.let(nil, ::T.untyped)
   EMPTY_TASK_ARGS = ::T.let(nil, ::T.untyped)
@@ -5843,6 +5841,8 @@ end
 module UnicodeNormalize
 end
 
+Visitor = Psych::Visitors::Visitor
+
 module Warning
   def warn(_); end
 end
@@ -5852,6 +5852,8 @@ module Warning
 end
 
 YAML = Psych
+
+YAMLTree = Psych::Visitors::YAMLTree
 
 module Zlib
   ASCII = ::T.let(nil, ::T.untyped)
