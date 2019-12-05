@@ -9,6 +9,7 @@ gem 'sinatra', '2.0.6'
 gem 'sinatra-contrib'
 gem 'rake'
 
-gem 'sorbet', :group => :development
-gem 'sorbet-runtime'
-gem 'rack-test'
+# 12/5/2019: Commented out the following:
+#gem 'sorbet', :group => :development
+#gem 'sorbet-runtime'
+#gem 'rack-test'

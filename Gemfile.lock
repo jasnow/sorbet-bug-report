@@ -7,8 +7,6 @@ GEM
     rack (2.0.7)
     rack-protection (2.0.6)
       rack
-    rack-test (1.1.0)
-      rack (>= 1.0, < 3)
     rake (13.0.1)
     sinatra (2.0.6)
       mustermann (~> 1.0)
@@ -22,22 +20,15 @@ GEM
       rack-protection (= 2.0.6)
       sinatra (= 2.0.6)
       tilt (~> 2.0)
-    sorbet (0.4.5099)
-      sorbet-static (= 0.4.5099)
-    sorbet-runtime (0.4.5099)
-    sorbet-static (0.4.5099-universal-darwin-14)
     tilt (2.0.10)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  rack-test
   rake
   sinatra (= 2.0.6)
   sinatra-contrib
-  sorbet
-  sorbet-runtime
 
 BUNDLED WITH
    2.0.2
