@@ -2,7 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     backports (3.18.1)
-    multi_json (1.14.1)
+    multi_json (1.15.0)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     rack (2.2.3)
